@@ -1,0 +1,19 @@
+#pragma once
+
+/**
+ * ASE MicroTeX Adapter — Umbrella Header
+ *
+ * Single include that pulls the entire public surface:
+ *   - ase::microtex::init() / shutdown()  (lifecycle)
+ *   - ase::microtex::render_math()        (draw a formula to Cairo)
+ *   - ase::microtex::MathResult           (bounding-box return value)
+ *
+ * The adapter isolates MicroTeX's tex::* inheritance-based backend API
+ * from client code. Clients never include MicroTeX headers directly.
+ *
+ * @module      ase-microtex-adapter
+ * @layer       adapter (third-party isolation)
+ */
+
+#include <ase/microtex/init.hpp>
+#include <ase/microtex/render.hpp>
