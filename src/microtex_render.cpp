@@ -73,7 +73,7 @@ MathResult render_math(
     const int width = 0;
     const float text_size = static_cast<float>(font_size);
     const float line_space = static_cast<float>(font_size) * 0.2f;
-    const tex::color fg = tex::BLACK;
+    const tex::color fg = tex::black;
 
     // unique_ptr owns the heap-allocated TeXRender — cleanup happens in
     // the standard deleter on scope exit, no raw delete in this file.
@@ -96,6 +96,36 @@ MathResult render_math(
     result.height   = static_cast<double>(render->getHeight());
     result.depth    = static_cast<double>(render->getDepth());
     result.baseline = static_cast<double>(render->getBaseline());
+    return result;
+}
+
+MathResult measure_math(
+    const char* latex,
+    uint32_t latex_len,
+    double font_size,
+    bool is_display
+) {
+    init();
+
+    const std::wstring wlatex = to_wstring(latex, latex_len);
+
+    const int width = 0;
+    const float text_size = static_cast<float>(font_size);
+    const float line_space = static_cast<float>(font_size) * 0.2f;
+    const tex::color fg = tex::black;
+
+    std::unique_ptr<tex::TeXRender> render{
+        tex::LaTeX::parse(wlatex, width, text_size, line_space, fg)
+    };
+    (void)is_display;
+
+    MathResult result;
+    if (render) {
+        result.width    = static_cast<double>(render->getWidth());
+        result.height   = static_cast<double>(render->getHeight());
+        result.depth    = static_cast<double>(render->getDepth());
+        result.baseline = static_cast<double>(render->getBaseline());
+    }
     return result;
 }
 
