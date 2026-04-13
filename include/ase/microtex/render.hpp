@@ -53,4 +53,24 @@ MathResult render_math(
     bool is_display
 );
 
+/**
+ * Measure a LaTeX math expression without drawing it.
+ *
+ * Used by inline math layout in paragraph rendering: callers reserve a
+ * bounding box in their text layout (e.g. via a Pango shape attribute)
+ * before drawing the actual glyphs at the laid-out position.
+ *
+ * @param latex       LaTeX source (UTF-8)
+ * @param latex_len   length of latex in bytes
+ * @param font_size   font size in pixels
+ * @param is_display  true for display style, false for inline (text style)
+ * @return            bounding box + baseline metrics (no drawing performed)
+ */
+MathResult measure_math(
+    const char* latex,
+    uint32_t latex_len,
+    double font_size,
+    bool is_display
+);
+
 }  // namespace ase::microtex

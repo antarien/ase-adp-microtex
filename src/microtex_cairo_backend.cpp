@@ -180,9 +180,9 @@ Cairo::Context::LineJoin translate_join(int join) {
 }  // namespace
 
 Graphics2D_cro::Graphics2D_cro(const Cairo::RefPtr<Cairo::Context>& context)
-    : _context(context), _color(tex::BLACK), _stroke(), _font(&default_font()),
+    : _context(context), _color(tex::black), _stroke(), _font(&default_font()),
       _sx(1.f), _sy(1.f) {
-    setColor(tex::BLACK);
+    setColor(tex::black);
     setStroke(tex::Stroke());
     setFont(_font);
 }
