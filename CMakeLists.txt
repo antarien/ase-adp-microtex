@@ -7,7 +7,7 @@ ASE MICROTEX ADAPTER BUILD CONFIGURATION
 @brief       Build configuration for ase-adp-microtex
 @description 3rd-party isolation module for MicroTeX LaTeX math rendering.
              Wraps tex::Graphics2D / tex::Font / tex::TextLayout inheritance
-             behind a clean ase::microtex public API built on cairomm-1.16
+             behind a clean ase::adp::microtex public API built on cairomm-1.16
              and pangomm-2.48.
 
 @module      ase-adp-microtex
@@ -181,7 +181,7 @@ add_library(ase-adp-microtex STATIC
     include/ase/adp/microtex/init.hpp
     include/ase/adp/microtex/render.hpp
 )
-add_library(ase::adp-microtex ALIAS ase-adp-microtex)
+add_library(ase::adp::microtex ALIAS ase-adp-microtex)
 
 target_include_directories(ase-adp-microtex
     PUBLIC

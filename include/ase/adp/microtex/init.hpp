@@ -4,7 +4,7 @@
  * ASE MicroTeX Adapter — Init/Shutdown API
  *
  * MicroTeX loads its font, glyph, and formula-mapping resources lazily on
- * first use via tex::LaTeX::init(). Clients must call ase::microtex::init()
+ * first use via tex::LaTeX::init(). Clients must call ase::adp::microtex::init()
  * once during application startup (before the first render_math() call) so
  * the resources are loaded from the adapter's bundled res/ tree.
  *
@@ -15,7 +15,7 @@
  * @layer       adapter (third-party isolation)
  */
 
-namespace ase::microtex {
+namespace ase::adp::microtex {
 
 /**
  * Load MicroTeX resources from the adapter's bundled res/ tree.
@@ -29,4 +29,4 @@ void init();
  */
 void shutdown();
 
-}  // namespace ase::microtex
+}  // namespace ase::adp::microtex

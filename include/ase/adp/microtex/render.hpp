@@ -7,7 +7,7 @@
  * MicroTeX engine. This is the only surface clients need — the internal
  * tex::Graphics2D / tex::Font / tex::TextLayout inheritance is fully hidden.
  *
- * Clients must call ase::microtex::init() once at process startup before
+ * Clients must call ase::adp::microtex::init() once at process startup before
  * any render_math() call — see init.hpp.
  *
  * @module      ase-adp-microtex
@@ -17,7 +17,7 @@
 #include <cairomm/cairomm.h>
 #include <cstdint>
 
-namespace ase::microtex {
+namespace ase::adp::microtex {
 
 /**
  * Result of a math-expression render call.
@@ -73,4 +73,4 @@ MathResult measure_math(
     bool is_display
 );
 
-}  // namespace ase::microtex
+}  // namespace ase::adp::microtex

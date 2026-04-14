@@ -28,7 +28,7 @@
 
 #include "graphic/graphic.h"
 
-namespace ase::microtex {
+namespace ase::adp::microtex {
 
 /**
  * Font handle backed by Cairo's FreeType font-face and a cached
@@ -119,4 +119,4 @@ private:
     float _sx, _sy;
 };
 
-}  // namespace ase::microtex
+}  // namespace ase::adp::microtex
