@@ -17,7 +17,7 @@
 #error "ASE_MICROTEX_RES_PATH must be injected by CMake — see adapter/ase-adp-microtex/CMakeLists.txt"
 #endif
 
-namespace ase::microtex {
+namespace ase::adp::microtex {
 
 namespace {
 // Lazy-initialized flag: true after tex::LaTeX::init() has run successfully.
@@ -45,4 +45,4 @@ void shutdown() {
     initialized = false;
 }
 
-}  // namespace ase::microtex
+}  // namespace ase::adp::microtex

@@ -20,7 +20,7 @@
 
 #include "utils/utf.h"  // tex::wide2utf8
 
-namespace ase::microtex {
+namespace ase::adp::microtex {
 
 // ═══════════════════════════════════════════════════════════════════════════
 // Font_cro
@@ -68,18 +68,18 @@ bool Font_cro::operator!=(const tex::Font& f) const {
 // MicroTeX core calls these two factories to create platform-specific fonts.
 // They are declared in graphic/graphic.h but left unimplemented by the core;
 // every backend must provide them. They live in the tex:: namespace.
-}  // namespace ase::microtex
+}  // namespace ase::adp::microtex
 
 namespace tex {
 Font* Font::create(const std::string& file, float size) {
-    return new ase::microtex::Font_cro(file, size);
+    return new ase::adp::microtex::Font_cro(file, size);
 }
 sptr<Font> Font::_create(const std::string& name, int style, float size) {
-    return sptrOf<ase::microtex::Font_cro>(name, style, size);
+    return sptrOf<ase::adp::microtex::Font_cro>(name, style, size);
 }
 }  // namespace tex
 
-namespace ase::microtex {
+namespace ase::adp::microtex {
 
 // ═══════════════════════════════════════════════════════════════════════════
 // TextLayout_cro
@@ -143,16 +143,16 @@ void TextLayout_cro::draw(tex::Graphics2D& g2, float x, float y) {
     g2.translate(-x, -y + _ascent);
 }
 
-}  // namespace ase::microtex
+}  // namespace ase::adp::microtex
 
 namespace tex {
 sptr<TextLayout> TextLayout::create(const std::wstring& src, const sptr<Font>& font) {
-    auto f = std::static_pointer_cast<ase::microtex::Font_cro>(font);
-    return sptrOf<ase::microtex::TextLayout_cro>(src, f);
+    auto f = std::static_pointer_cast<ase::adp::microtex::Font_cro>(font);
+    return sptrOf<ase::adp::microtex::TextLayout_cro>(src, f);
 }
 }  // namespace tex
 
-namespace ase::microtex {
+namespace ase::adp::microtex {
 
 // ═══════════════════════════════════════════════════════════════════════════
 // Graphics2D_cro
@@ -293,4 +293,4 @@ void Graphics2D_cro::fillRoundRect(float x, float y, float w, float h, float rx,
     _context->fill();
 }
 
-}  // namespace ase::microtex
+}  // namespace ase::adp::microtex

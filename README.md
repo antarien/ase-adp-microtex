@@ -23,10 +23,10 @@ Clients include only `ase/adp/microtex/*.hpp` and never touch `tex::*` types.
 #include <ase/adp/microtex/render.hpp>
 
 // Once at process startup:
-ase::microtex::init();
+ase::adp::microtex::init();
 
 // Per draw (inside a Cairo::DrawingArea draw handler or similar):
-auto result = ase::microtex::render_math(
+auto result = ase::adp::microtex::render_math(
     cr,                      // Cairo::RefPtr<Cairo::Context>
     "\\frac{a^2 + b^2}{c}",  // LaTeX source
     x_position,
@@ -42,11 +42,11 @@ auto result = ase::microtex::render_math(
 - **Upstream:** NanoMichael/MicroTeX core sources (atom/, box/, core/, fonts/, utils/, res/, latex.cpp, render.cpp). The upstream `CMakeLists.txt` is NOT used — it hardcodes `gtkmm-3.0` / `cairomm-1.0` / `gtksourceviewmm-3.0` which conflict with the viewer's `gtkmm-4.0` stack. We compile the portable core sources manually and ship our own `Graphics2D` backend.
 - **Backend:** `cairomm-1.16` + `pangomm-2.48` (gtkmm-4 compatible), wired by `src/microtex_cairo_backend.cpp`.
 - **Fonts / symbols:** MicroTeX loads fonts, glyph metrics, and formula mappings from a `res/` tree at runtime via `tex::LaTeX::init(res_path)`. The adapter's CMake copies the upstream `res/` tree into `${CMAKE_CURRENT_BINARY_DIR}/share/microtex/res` and hardcodes the path as a compile-time define.
-- **Public surface:** `ase::microtex::MathResult`, `ase::microtex::render_math()`, `ase::microtex::init()`. No `tex::*` symbol is exported from the public headers.
+- **Public surface:** `ase::adp::microtex::MathResult`, `ase::adp::microtex::render_math()`, `ase::adp::microtex::init()`. No `tex::*` symbol is exported from the public headers.
 
 ## Layer
 
-`adapter/` is a new top-level directory — a third-party isolation layer that sits orthogonal to the `L0..L5` ECS stack. Consumed by L5 clients via `ase::microtex`. Depends on `cairomm-1.16` and `pangomm-2.48` as system dependencies, and on the fetched MicroTeX sources as a FetchContent dep.
+`adapter/` is a new top-level directory — a third-party isolation layer that sits orthogonal to the `L0..L5` ECS stack. Consumed by L5 clients via `ase::adp::microtex`. Depends on `cairomm-1.16` and `pangomm-2.48` as system dependencies, and on the fetched MicroTeX sources as a FetchContent dep.
 
 ## Build
 

@@ -3,7 +3,7 @@
  *
  * Translates the ASE-native call signature (cairomm context + utf-8 latex +
  * pixel coords) into MicroTeX's internal TeXRender/Graphics2D pipeline and
- * returns the bounding-box metrics as an ase::microtex::MathResult.
+ * returns the bounding-box metrics as an ase::adp::microtex::MathResult.
  *
  * Pipeline:
  *   1. latex char* ⇒ std::wstring (required by tex::LaTeX::parse)
@@ -32,7 +32,7 @@
 #include <memory>
 #include <string>
 
-namespace ase::microtex {
+namespace ase::adp::microtex {
 
 namespace {
 // Convert a UTF-8 byte range to a wide-character string for MicroTeX.
@@ -129,4 +129,4 @@ MathResult measure_math(
     return result;
 }
 
-}  // namespace ase::microtex
+}  // namespace ase::adp::microtex
