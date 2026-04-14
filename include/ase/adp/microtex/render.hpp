@@ -10,7 +10,7 @@
  * Clients must call ase::microtex::init() once at process startup before
  * any render_math() call — see init.hpp.
  *
- * @module      ase-microtex-adapter
+ * @module      ase-adp-microtex
  * @layer       adapter (third-party isolation)
  */
 

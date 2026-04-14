@@ -5,16 +5,16 @@
  * idempotent ASE entry point. The resource path is baked in at build time
  * by CMake via ASE_MICROTEX_RES_PATH.
  *
- * @module      ase-microtex-adapter
+ * @module      ase-adp-microtex
  * @layer       adapter (third-party isolation)
  */
 
-#include <ase/microtex/init.hpp>
+#include <ase/adp/microtex/init.hpp>
 
 #include "latex.h"  // tex::LaTeX
 
 #ifndef ASE_MICROTEX_RES_PATH
-#error "ASE_MICROTEX_RES_PATH must be injected by CMake — see adapter/ase-microtex-adapter/CMakeLists.txt"
+#error "ASE_MICROTEX_RES_PATH must be injected by CMake — see adapter/ase-adp-microtex/CMakeLists.txt"
 #endif
 
 namespace ase::microtex {

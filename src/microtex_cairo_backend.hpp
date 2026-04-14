@@ -11,14 +11,14 @@
  * This is the one place in the codebase where `public tex::Font`,
  * `public tex::TextLayout`, and `public tex::Graphics2D` are permitted.
  * The ECS validator third-party whitelist authorizes these specifically
- * under the adapter/ase-microtex-adapter/ path.
+ * under the adapter/ase-adp-microtex/ path.
  *
  * The implementation is a direct port of the upstream
  * NanoMichael/MicroTeX graphic_cairo.{h,cpp} to the gtkmm-4 stack
  * (cairomm-1.16 + pangomm-2.48). The upstream file cannot be used
  * directly because upstream links against gtkmm-3.0.
  *
- * @module      ase-microtex-adapter
+ * @module      ase-adp-microtex
  * @layer       adapter (third-party isolation)
  */
 

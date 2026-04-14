@@ -17,12 +17,12 @@
  * that keeps the delete inside the standard library's deleter and
  * guarantees cleanup even on exception.
  *
- * @module      ase-microtex-adapter
+ * @module      ase-adp-microtex
  * @layer       adapter (third-party isolation)
  */
 
-#include <ase/microtex/render.hpp>
-#include <ase/microtex/init.hpp>
+#include <ase/adp/microtex/render.hpp>
+#include <ase/adp/microtex/init.hpp>
 
 #include "microtex_cairo_backend.hpp"
 #include "latex.h"
