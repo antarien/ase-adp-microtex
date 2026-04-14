@@ -7,7 +7,7 @@
  * paths, includes, and style dispatch are rewritten to ASE conventions
  * (no std::max, no reinterpret_cast, no switch/case, no static containers).
  *
- * @module      ase-microtex-adapter
+ * @module      ase-adp-microtex
  * @layer       adapter (third-party isolation)
  */
 

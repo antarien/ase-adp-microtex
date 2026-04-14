@@ -1,4 +1,4 @@
-# ase-microtex-adapter
+# ase-adp-microtex
 
 [![Layer](https://img.shields.io/badge/Layer-Adapter-orange.svg)]()
 [![C++20](https://img.shields.io/badge/C%2B%2B-20-blue.svg)]()
@@ -16,11 +16,11 @@ ASE client code is inheritance-hostile by policy. The ECS validator enforces thi
 
 ## Public API
 
-Clients include only `ase/microtex/*.hpp` and never touch `tex::*` types.
+Clients include only `ase/adp/microtex/*.hpp` and never touch `tex::*` types.
 
 ```cpp
-#include <ase/microtex/init.hpp>
-#include <ase/microtex/render.hpp>
+#include <ase/adp/microtex/init.hpp>
+#include <ase/adp/microtex/render.hpp>
 
 // Once at process startup:
 ase::microtex::init();
@@ -53,7 +53,7 @@ auto result = ase::microtex::render_math(
 Built as part of the ASE root build when `ASE_BUILD_CLIENTS=ON`. Standalone:
 
 ```bash
-cd adapter/ase-microtex-adapter
+cd adapter/ase-adp-microtex
 cmake -B build -G Ninja
 ninja -C build
 ```

@@ -11,9 +11,9 @@
  * The adapter isolates MicroTeX's tex::* inheritance-based backend API
  * from client code. Clients never include MicroTeX headers directly.
  *
- * @module      ase-microtex-adapter
+ * @module      ase-adp-microtex
  * @layer       adapter (third-party isolation)
  */
 
-#include <ase/microtex/init.hpp>
-#include <ase/microtex/render.hpp>
+#include <ase/adp/microtex/init.hpp>
+#include <ase/adp/microtex/render.hpp>

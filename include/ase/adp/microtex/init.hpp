@@ -11,7 +11,7 @@
  * shutdown() releases the MicroTeX context and is safe to call even if
  * init() was never invoked.
  *
- * @module      ase-microtex-adapter
+ * @module      ase-adp-microtex
  * @layer       adapter (third-party isolation)
  */
 
