@@ -14,7 +14,7 @@ ASE MICROTEX ADAPTER BUILD CONFIGURATION
 @layer       adapter (3rd-party isolation, consumed by L5 clients)
 @created     2026-04-13
 @modified    2026-04-13
-@version     00.00.01.00001 [stub]
+@version     00.00.01.00001 [seed]
 ]]
 
 # Parse local VERSION (SSOT) if not building from root
