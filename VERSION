@@ -39,10 +39,10 @@
 #   stable = Production ready (set manually)
 #
 # ==============================================================================
-ASE_ADP_MICROTEX=00.00.04.00004
+ASE_ADP_MICROTEX=00.00.06.00006
 ASE_ADP_MICROTEX_NAME=MicroTeX Adapter
 ASE_ADP_MICROTEX_DESC=Cairo/Pango backend adapter for MicroTeX LaTeX math rendering
 ASE_ADP_MICROTEX_LAYER=5
-ASE_ADP_MICROTEX_STATUS=seed
+ASE_ADP_MICROTEX_STATUS=poc
 ASE_ADP_MICROTEX_CREATED=2026-04-13
-ASE_ADP_MICROTEX_UPDATED=2026-04-14
+ASE_ADP_MICROTEX_UPDATED=2026-05-06
