@@ -65,6 +65,25 @@ if(NOT microtex_SOURCE_DIR)
         SOURCE_SUBDIR _skip_upstream_cmake_
     )
     FetchContent_MakeAvailable(microtex)
+
+    # ── Real fix for upstream microtex/latex.cpp:57 -Wunused-result ──
+    # Upstream ignores asprintf()'s return value. On allocation failure
+    # userdata_fallback would be uninitialised and the next line would
+    # construct std::string from a garbage pointer. Patch the populated
+    # source idempotently — this runs at configure time after
+    # FetchContent has cached the upstream tree.
+    set(_MTX_LATEX "${microtex_SOURCE_DIR}/src/latex.cpp")
+    if(EXISTS "${_MTX_LATEX}")
+        file(READ "${_MTX_LATEX}" _MTX_LATEX_SRC)
+        if(_MTX_LATEX_SRC MATCHES "asprintf\\(&userdata_fallback,[^\n]*\\);\n    paths\\.push")
+            string(REPLACE
+                "    char* userdata_fallback;\n    asprintf(&userdata_fallback, \"%s/.local/share/clatexmath/\", home);\n    paths.push(string(userdata_fallback));\n    delete userdata_fallback;"
+                "    char* userdata_fallback = nullptr;\n    if (asprintf(&userdata_fallback, \"%s/.local/share/clatexmath/\", home) >= 0 && userdata_fallback != nullptr) {\n      paths.push(string(userdata_fallback));\n      free(userdata_fallback);\n    }"
+                _MTX_LATEX_SRC "${_MTX_LATEX_SRC}")
+            file(WRITE "${_MTX_LATEX}" "${_MTX_LATEX_SRC}")
+            message(STATUS "Patched microtex latex.cpp asprintf return-check")
+        endif()
+    endif()
 endif()
 
 # ── MicroTeX core static library ────────────────────────────────────
@@ -202,10 +221,23 @@ target_link_libraries(ase-adp-microtex
         PkgConfig::FONTCONFIG
 )
 
+include(GNUInstallDirs)
+
+# Runtime path microtex_init reads to load font/symbol resources. For
+# in-tree dev builds it points at the build directory (the file(COPY)
+# above populates that). AUR / packaged builds override this via
+#   -DASE_MICROTEX_RES_PATH=/usr/share/microtex/res
+# so the resulting binary does not bake a $srcdir reference into itself.
+set(ASE_MICROTEX_RES_PATH "${CMAKE_CURRENT_BINARY_DIR}/share/microtex/res"
+    CACHE STRING "Where microtex_init loads font/symbol resources at runtime")
 target_compile_definitions(ase-adp-microtex PRIVATE
-    ASE_MICROTEX_RES_PATH="${CMAKE_CURRENT_BINARY_DIR}/share/microtex/res"
+    ASE_MICROTEX_RES_PATH="${ASE_MICROTEX_RES_PATH}"
 )
 
-include(GNUInstallDirs)
 install(TARGETS ase-adp-microtex DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+# Ship the upstream microtex resource tree at a deterministic system
+# location. AUR PKGBUILD points ASE_MICROTEX_RES_PATH here; the binary
+# loads font/symbol .res files from this directory at runtime.
+install(DIRECTORY ${microtex_SOURCE_DIR}/res/
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/microtex/res)
