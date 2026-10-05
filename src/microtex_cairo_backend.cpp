@@ -13,7 +13,23 @@
 
 #include "microtex_cairo_backend.hpp"
 
+// DIE REIHENFOLGE DIESER ZWEI IST BINDEND, NICHT STILISTISCH.
+//
+// FcFreeTypeQuery steht in fcfreetype.h, nicht in fontconfig.h — gemessen null Treffer dort,
+// deklariert in fcfreetype.h:59. Und fcfreetype.h allein uebersetzt NICHT: es verwendet die
+// Makros _FCFUNCPROTOBEGIN und FcChar8, die erst fontconfig.h erklaert. Beide Richtungen
+// nachgemessen, allein schlaegt fehl, in dieser Folge mit echtem Aufruf geht es durch.
+//
+// Den Include-Pfad fuer das ft2build.h, das fcfreetype.h selbst nachzieht, liefert bereits
+// pkg-config fuer fontconfig mit (-I/usr/include/freetype2); eine eigene freetype2-Kante
+// braucht dieses Ziel deshalb nicht.
+//
+// WARUM ES VORHER UEBERSETZTE: fontconfig steht seit dem 8. September auf 2.18.3. Das Binaer
+// dieses Clients stammte vom 24. April, und in der Zwischenzeit ist die Deklaration aus dem
+// Dachheader herausgewandert. Dieselbe Klasse wie ein Soname-Sprung — lange falsch und
+// unsichtbar, solange niemand die Stelle anfasst.
 #include <fontconfig/fontconfig.h>
+#include <fontconfig/fcfreetype.h>
 #include <cairomm/fontface.h>
 #include <cmath>
 #include <utility>
