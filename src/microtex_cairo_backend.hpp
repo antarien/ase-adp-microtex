@@ -20,6 +20,12 @@
  *
  * @module      ase-adp-microtex
  * @layer       adapter (third-party isolation)
+ *
+ * Copyright (c) Jan Ohlmann. All rights reserved.
+ * Licensed to ANTARES SIMULACAO LTDA. Use is governed by LICENSE.md and PJV.md in this repository.
+ * SPDX-License-Identifier: LicenseRef-ASE-LIC
+ * Parts ported from MicroTeX (NanoMichael/MicroTeX) stay under the MIT License: third_party/licenses/microtex.txt
+ * SPDX-License-Identifier: MIT
  */
 
 #include <cairomm/cairomm.h>

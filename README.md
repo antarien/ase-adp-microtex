@@ -67,3 +67,19 @@ New 3rd-party-inheritance-heavy libraries (Qt, Skia, Wayland-native, ...) get th
 - `adapter/ase-<lib>-adapter/` — pattern
 
 Each adapter isolates its third-party inheritance entirely, exposes only ASE-native types, and keeps client subgits inheritance-clean.
+
+## License
+
+Copyright (c) Jan Ohlmann. All rights reserved.
+Licensed to ANTARES SIMULACAO LTDA (CNPJ 69.363.366/0001-21) under ASE-JAN-LTDA-2026-10-16-1.0.
+
+This repository is released under the Antares Simulation Engine and ADG License Agreement
+**ASE-ADG-LIC-2026-10-16-1.0** ([LICENSE.md](LICENSE.md)) and the ADG Project Participation
+Agreement **ASE-ADG-PJV-2026-10-16-1.0** ([PJV.md](PJV.md)). Contribution workflow: [CONTRIBUTING.md](CONTRIBUTING.md).
+
+Translations: [DE LIC](license/de/LIC_ASE_ADG_DE.md) · [DE PJV](license/de/PJV_ASE_ADG_DE.md) ·
+[PT LIC](license/pt/LIC_ASE_ADG_PT.md) · [PT PJV](license/pt/PJV_ASE_ADG_PT.md)
+
+SPDX-License-Identifier: LicenseRef-ASE-LIC
+
+Third-party components keep their own licenses; see [NOTICE](NOTICE).
